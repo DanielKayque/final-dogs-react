@@ -30,12 +30,32 @@ img{
   max-width: 100%;
 }
 
-button, input{
-  display: block;
+/* button,
+input{
+  display: flex;
   font-size: 1rem;
   font-family: var(--type-first);
   color: #333;
+  background-color: #b2b2b2;
+  border-radius: 8px;
 }
+
+input{
+  padding: 10px 80px;
+  text-align: left;
+}
+
+.button{
+  background-color: #FABD01;
+  padding: 10px 40px;
+  border: 3px solid transparent;
+}
+
+.button:hover{
+  border: 3px solid #FCECC3;
+  box-shadow: 0 0 0 1px #FABD01;
+  transition: all 0.2s;
+} */
 
 .container{
   max-width: 50rem; /*800px*/
