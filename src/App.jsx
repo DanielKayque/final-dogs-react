@@ -4,6 +4,7 @@ import LoginForm from './Login/LoginForm'
 import Login from './Login/Login'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
+import Home from './Components/Home'
 
 const App = () => {
   return (
@@ -11,7 +12,7 @@ const App = () => {
       <BrowserRouter>
       <Header />
       <Routes>
-        <Route path='/' element={<LoginForm />}/>
+        <Route path='/' element={<Home />}/>
         <Route path='/login/*' element={<Login />}/>
       </Routes>
       <Footer/>

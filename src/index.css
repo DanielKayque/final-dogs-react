@@ -57,6 +57,18 @@ input{
   transition: all 0.2s;
 } */
 
+.input{
+  @apply bg-gray-200 py-2 px-5 rounded-lg focus:outline-[#FABD01] block
+}
+
+.input-error{
+  @apply border-red-600 border-2
+}
+
+.button{
+  @apply bg-[#FABD01] py-3 px-9 rounded-lg border-transparent border-[3px] hover:border-[#FCECC3] hover:border-[3px] hover:ring-1 ring-[#FABD01] transition-all duration-200
+}
+
 .container{
   max-width: 50rem; /*800px*/
   padding: 0 1rem;

@@ -5,6 +5,7 @@ import dog from '../images//Assets/login.jpg';
 import { Link, Route, Routes } from 'react-router-dom';
 import ForgotPassword from './ForgotPassword.jsx';
 import LoginForm from './LoginForm.jsx';
+import LoginRegister from './LoginRegister.jsx';
 
 const Login = () => {
   return (
@@ -19,6 +20,7 @@ const Login = () => {
       <Routes>
         <Route path="/" element={<LoginForm />} />
         <Route path="perdeu" element={<ForgotPassword />} />
+        <Route path="cadastro" element={<LoginRegister />} />
       </Routes>
     </section>
   );
