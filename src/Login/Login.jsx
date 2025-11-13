@@ -9,14 +9,14 @@ const Login = () => {
   const [password, setPassword] = useState('');
   return (
     <section className="h-auto">
-      <div className="h-auto flex border-2 border-black">
+      <div className="h-[1200px] flex md:h-auto">
         <img
-          className="h-[1000px] w-full object-cover"
+          className="hidden md:block w-1/2 h-[1200px] object-cover"
           src={dog}
           alt="Cachorro"
         />
 
-        <form className="border-2 w-full h-[auto] border-4 border-red-400 px-20 flex flex-col justify-center">
+        <form className="w-full h-[auto] px-20 flex flex-col justify-center">
           <div className="flex flex-col items-start gap-6">
             <h1 className="text-6xl text-[#333]">Login</h1>
             <Input
@@ -42,6 +42,9 @@ const Login = () => {
             >
               Perdeu a senha?
             </Link>
+            <h1 className="text-4xl text-[#333] mt-4">Cadastre-se</h1>
+            <p>Ainda não possui conta? Cadastre-se no site.</p>
+            <Button label="Cadastre-se" />
           </div>
         </form>
       </div>
