@@ -11,14 +11,14 @@ const Login = () => {
     <section className="h-auto">
       <div className="h-[1200px] flex md:h-auto">
         <img
-          className="hidden md:block w-1/2 h-[1200px] object-cover"
+          className="hidden md:block w-1/2 min-h-svh  object-cover"
           src={dog}
           alt="Cachorro"
         />
 
         <form className="w-full h-[auto] px-20 flex flex-col justify-center">
           <div className="flex flex-col items-start gap-6">
-            <h1 className="text-6xl text-[#333]">Login</h1>
+            <h1 className="after:content-[''] after:w-[30px] after:h-[30px] after:bg-[#FABD01] after:absolute after:left-0 after:bottom-0 relative after:z-[-1] after:rounded-lg text-6xl text-[#333]">Login</h1>
             <Input
               label="Usuário"
               type="text"
