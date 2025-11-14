@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 const LoginForm = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [token, setToken] = useState('');
   const {
     register,
@@ -14,22 +12,19 @@ const LoginForm = () => {
   } = useForm();
 
   function onSubmit(data) {
-    setUsername(data.name);
-    setPassword(data.senha);
     fetch('https://dogsapi.origamid.dev/json/jwt-auth/v1/token', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        username,
-        password,
-      }),
+      body: JSON.stringify(data),
     })
       .then((response) => {
+        console.log(response)
         return response.json();
       })
       .then((json) => {
+        console.log(json)
         setToken(json.token);
         return json;
       });
@@ -40,19 +35,18 @@ const LoginForm = () => {
       onSubmit={onSubmit}
       className="md:w-1/2 w-full items-center md:items-start h-svh md:h-[auto] px-20 flex flex-col justify-center"
     >
-      {console.log(token)}
       <div className="flex flex-col py-20 md:py-0 items-start gap-6">
         <h1 className="after:content-[''] after:w-[30px] after:h-[30px] after:bg-[#FABD01] after:absolute after:left-0 after:bottom-0 relative after:z-[-1] after:rounded-lg text-6xl text-[#333]">
           Login
         </h1>
         <label htmlFor="name">
-          Nome
+          Usuario
           <input
             className={`input ${
-              errors?.name?.type === 'required' && 'input-error'
+              errors?.username?.type === 'required' && 'input-error'
             }`}
             type="text"
-            {...register('name', { required: true })}
+            {...register('username', { required: true })}
           />
         </label>
         {errors?.name?.type === 'required' && (
@@ -63,10 +57,10 @@ const LoginForm = () => {
           Senha
           <input
             className={`input ${
-              errors?.senha?.type === 'required' && 'input-error'
+              errors?.password?.type === 'required' && 'input-error'
             }`}
             type="text"
-            {...register('senha', { required: true })}
+            {...register('password', { required: true })}
           />
         </label>
         {errors?.senha?.type === 'required' && (
