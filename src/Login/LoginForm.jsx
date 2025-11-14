@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import Input from '../Components/Input';
 import Button from '../Components/Button';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 const LoginForm = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [token, setToken] = useState('');
   const {
     register,
     handleSubmit,
@@ -12,7 +14,25 @@ const LoginForm = () => {
   } = useForm();
 
   function onSubmit(data) {
-    console.log(data);
+    setUsername(data.name);
+    setPassword(data.senha);
+    fetch('https://dogsapi.origamid.dev/json/jwt-auth/v1/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        setToken(json.token);
+        return json;
+      });
   }
 
   return (
@@ -20,6 +40,7 @@ const LoginForm = () => {
       onSubmit={onSubmit}
       className="md:w-1/2 w-full items-center md:items-start h-svh md:h-[auto] px-20 flex flex-col justify-center"
     >
+      {console.log(token)}
       <div className="flex flex-col py-20 md:py-0 items-start gap-6">
         <h1 className="after:content-[''] after:w-[30px] after:h-[30px] after:bg-[#FABD01] after:absolute after:left-0 after:bottom-0 relative after:z-[-1] after:rounded-lg text-6xl text-[#333]">
           Login
@@ -35,20 +56,6 @@ const LoginForm = () => {
           />
         </label>
         {errors?.name?.type === 'required' && (
-          <p className="text-red-600">Digite algo</p>
-        )}
-
-        <label htmlFor="email">
-          Email
-          <input
-            className={`input ${
-              errors?.email?.type === 'required' && 'input-error'
-            }`}
-            type="text"
-            {...register('email', { required: true })}
-          />
-        </label>
-        {errors?.email?.type === 'required' && (
           <p className="text-red-600">Digite algo</p>
         )}
 

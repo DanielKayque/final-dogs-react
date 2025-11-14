@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import dog from '../images//Assets/login.jpg';
-// import Input from '../Components/Input.jsx';
-// import Button from '../Components/Button.jsx';
 import { Link, Route, Routes } from 'react-router-dom';
 import ForgotPassword from './ForgotPassword.jsx';
 import LoginForm from './LoginForm.jsx';
