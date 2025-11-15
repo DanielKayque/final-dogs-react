@@ -1,38 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../Components/Button';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { TOKEN_POST, USER_GET } from '../api';
+import { UserContext } from '../Context/UserContext';
 
 const LoginForm = () => {
-  const [token, setToken] = useState('');
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  function onSubmit(data) {
-    fetch('https://dogsapi.origamid.dev/json/jwt-auth/v1/token', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        console.log(response)
-        return response.json();
-      })
-      .then((json) => {
-        console.log(json)
-        setToken(json.token);
-        return json;
-      });
+  const navigate = useNavigate();
+  const { userLogin } = React.useContext(UserContext);
+
+
+  async function onSubmit(data) {
+    userLogin({username: data.username, password: data.password});
   }
 
+
   return (
-    <div
-      onSubmit={onSubmit}
+    <form
+      onSubmit={handleSubmit(onSubmit)}
       className="md:w-1/2 w-full items-center md:items-start h-svh md:h-[auto] px-20 flex flex-col justify-center"
     >
       <div className="flex flex-col py-20 md:py-0 items-start gap-6">
@@ -49,7 +40,7 @@ const LoginForm = () => {
             {...register('username', { required: true })}
           />
         </label>
-        {errors?.name?.type === 'required' && (
+        {errors?.username?.type === 'required' && (
           <p className="text-red-600">Digite algo</p>
         )}
 
@@ -67,7 +58,7 @@ const LoginForm = () => {
           <p className="text-red-600">Digite algo</p>
         )}
 
-        <button onClick={() => handleSubmit(onSubmit)()} className="button">
+        <button type="submit" className="button">
           Enviar
         </button>
 
@@ -90,7 +81,7 @@ const LoginForm = () => {
           <Button label="Cadastre-se" />
         </Link>
       </div>
-    </div>
+    </form>
   );
 };
 

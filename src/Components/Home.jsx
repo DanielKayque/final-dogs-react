@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [photos, setPhotos] = useState('');
+  const navigate = useNavigate();
+  const usuarioLogado = window.localStorage.getItem('usuario');
   useEffect(() => {
     fetch('https://dogsapi.origamid.dev/json/api/photo')
       .then((response) => {
@@ -14,17 +17,22 @@ const Home = () => {
         return api;
       });
   }, []);
+  if (usuarioLogado) {
+    return (
+      <div className="h-svh">
+        <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
+          {photos &&
+            photos.map((photo) => (
+              <li key={photo.id}>
+                <img className="rounded-sm" src={photo.src} alt="Foto" />
+              </li>
+            ))}
+        </ul>
+      </div>
+    );
+  }
   return (
-    <div className="h-svh">
-      <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
-        {photos &&
-          photos.map((photo) => (
-            <li key={photo.id}>
-              <img className="rounded-sm" src={photo.src} alt="Foto" />
-            </li>
-          ))}
-      </ul>
-    </div>
+    navigate('/login')
   );
 };
 
