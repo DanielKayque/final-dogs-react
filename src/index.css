@@ -61,6 +61,21 @@ input{
   @apply bg-gray-200 py-2 px-5 rounded-lg focus:outline-[#FABD01] block
 }
 
+@keyframes animeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animeLeft {
+  animation: animeLeft 0.3s ease forwards;
+}
+
 .input-error{
   @apply border-red-600 border-2
 }

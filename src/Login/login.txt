@@ -1,9 +1,16 @@
-  const {
-    register,
-    handleSubmit,
-    // formState: { errors },
-  } = useForm;
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+{
+    login ? (
+      <div className="h-svh">
+        <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
+          {photos &&
+            photos.map((photo) => (
+              <li key={photo.id}>
+                <img className="rounded-sm" src={photo.src} alt="Foto" />
+              </li>
+            ))}
+        </ul>
+      </div>
+    ) : (
+      <p>Bugou</p>
+    );
+  }
