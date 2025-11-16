@@ -13,13 +13,11 @@ const LoginForm = () => {
   } = useForm();
 
   const navigate = useNavigate();
-  const { userLogin } = React.useContext(UserContext);
-
+  const { userLogin, error, loading } = React.useContext(UserContext);
 
   async function onSubmit(data) {
-    userLogin({username: data.username, password: data.password});
+    userLogin({ username: data.username, password: data.password });
   }
-
 
   return (
     <form
@@ -57,10 +55,15 @@ const LoginForm = () => {
         {errors?.senha?.type === 'required' && (
           <p className="text-red-600">Digite algo</p>
         )}
+        {loading ? (
+          <button className='button' disabled>Carregando...</button>
+        ) : (
+          <button type="submit" className="button">
+            Entrar
+          </button>
+        )}
 
-        <button type="submit" className="button">
-          Enviar
-        </button>
+        {error && <p>{error}</p>}
 
         <Link
           className='after:w-[120px] after:bottom-0 after:left-0 after:h-[3px]  relative after:absolute after:bg-gray-700 after:content-[""]'

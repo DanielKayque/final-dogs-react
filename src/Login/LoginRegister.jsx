@@ -2,37 +2,27 @@ import React, { useState } from 'react';
 import Input from '../Components/Input';
 import Button from '../Components/Button';
 import { useForm } from 'react-hook-form';
+import { useContext } from 'react';
+import { UserContext } from '../Context/UserContext';
 
 const LoginRegister = () => {
-  const [usuario, setUsuario] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    fetch('https://dogsapi.origamid.dev/json/api/user', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: data.username,
-        password: data.password,
-        email: data.email,
-      }),
-    })
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((json) => {
-        console.log(json);
-        return json;
-      });
+  const { registerUser, userLogin } = useContext(UserContext);
+
+  const onSubmit = async ({ username, password, email }) => {
+    try {
+      await registerUser(username, password, email);
+      console.log(username, password);
+      console.log(userLogin);
+      userLogin(username, password);
+    } catch (error) {
+      console.error('Falha' + error.message);
+    }
   };
 
   return (
