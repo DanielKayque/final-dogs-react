@@ -16,14 +16,16 @@ const LoginRegister = () => {
 
   const onSubmit = async ({ username, password, email }) => {
     try {
+      setLoading(true);
       await registerUser(username, password, email);
-      console.log(username, password);
-      console.log(userLogin);
       userLogin(username, password);
+      setLoading(false);
     } catch (error) {
       console.error('Falha' + error.message);
     }
   };
+
+  const [loading, setLoading] = useState(false);
 
   return (
     <div className="animeLeft md:w-1/2 w-full items-center md:items-start h-[auto] px-20 flex flex-col justify-center">
@@ -74,9 +76,15 @@ const LoginRegister = () => {
           <p className="text-red-600">Digite um valor</p>
         )}
 
-        <button onClick={() => handleSubmit(onSubmit)()} className="button">
-          Cadastrar
-        </button>
+        {loading ? (
+          <button className="button" disabled>
+            Carregando...
+          </button>
+        ) : (
+          <button onClick={() => handleSubmit(onSubmit)()} className="button">
+            Cadastrar
+          </button>
+        )}
       </div>
     </div>
   );

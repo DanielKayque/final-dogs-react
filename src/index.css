@@ -57,8 +57,16 @@ input{
   transition: all 0.2s;
 } */
 
+body{
+  @apply p-4
+}
+
 .input{
   @apply bg-gray-200 py-2 px-5 rounded-lg focus:outline-[#FABD01] block
+}
+
+.input-file{
+  @apply block py-4 text-2xl text-[#b2b2b2]
 }
 
 @keyframes animeLeft {

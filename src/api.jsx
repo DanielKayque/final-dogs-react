@@ -58,3 +58,16 @@ export function PHOTO_GET() {
     url: API_URL + '/api/photo',
   };
 }
+
+export function PHOTO_POST(formData) {
+  return {
+    url: API_URL + '/api/photo',
+    options: {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+      body: formData,
+    },
+  };
+}
