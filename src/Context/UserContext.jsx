@@ -1,6 +1,12 @@
 import React, { Children, useContext } from 'react';
 import { createContext } from 'react';
-import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET, USER_POST } from '../api';
+import {
+  PHOTO_GET,
+  TOKEN_POST,
+  TOKEN_VALIDATE_POST,
+  USER_GET,
+  USER_POST,
+} from '../api';
 import js from '@eslint/js';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,6 +17,7 @@ export const UserStorage = ({ children }) => {
   const [login, setLogin] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
+  const [photos, setPhotos] = React.useState(null);
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -24,7 +31,7 @@ export const UserStorage = ({ children }) => {
           const response = await fetch(url, options);
           if (!response.ok) throw new Error('Token inválido');
           await getUser(token);
-          navigate('/')
+          navigate('/');
         } catch (error) {
           userLogout();
         } finally {
@@ -57,7 +64,7 @@ export const UserStorage = ({ children }) => {
       const { token } = await tokenResp.json();
       window.localStorage.setItem('token', token);
       await getUser(token);
-      setLogin(true)
+      setLogin(true);
       navigate('/');
     } catch (err) {
       setError(err.message);
@@ -84,6 +91,14 @@ export const UserStorage = ({ children }) => {
     const resp = await response.json();
   }
 
+  async function photoGet() {
+    const { url } = PHOTO_GET();
+    const response = await fetch(url);
+    const json = await response.json();
+    console.log(json);
+    setPhotos(json);
+  }
+
   return (
     <UserContext.Provider
       value={{
@@ -95,6 +110,8 @@ export const UserStorage = ({ children }) => {
         loading,
         error,
         registerUser,
+        photoGet,
+        photos,
       }}
     >
       {children}

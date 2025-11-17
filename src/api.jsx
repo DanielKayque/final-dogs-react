@@ -52,3 +52,9 @@ export function USER_POST(username, password, email) {
     },
   };
 }
+
+export function PHOTO_GET() {
+  return {
+    url: API_URL + '/api/photo',
+  };
+}

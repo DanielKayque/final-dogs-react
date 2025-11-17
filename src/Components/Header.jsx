@@ -18,11 +18,10 @@ const Header = () => {
         </Link>
 
         {dados ? (
-          <p className='flex'>
+          <p className="flex">
             <Link className="flex gap-1" to="/conta">
               {dados.nome} <Usuario />
             </Link>
-            <button onClick={userLogout}>Deslogar</button>
           </p>
         ) : (
           <Link className="flex gap-1" to="/login">

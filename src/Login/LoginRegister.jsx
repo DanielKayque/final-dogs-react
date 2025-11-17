@@ -42,7 +42,7 @@ const LoginRegister = () => {
             {...register('username', { required: true })}
           />
         </label>
-        {errors?.usuario?.type === 'required' && (
+        {errors?.username?.type === 'required' && (
           <p className="text-red-600">Digite algo</p>
         )}
 
@@ -57,7 +57,7 @@ const LoginRegister = () => {
           />
         </label>
         {errors?.email?.type === 'required' && (
-          <p className="text-red-600">Digite algo</p>
+          <p className="text-red-600">Digite um valor</p>
         )}
 
         <label htmlFor="password">
@@ -65,13 +65,13 @@ const LoginRegister = () => {
           <input
             type="text"
             className={`input ${
-              errors?.senha?.type === 'required' && 'input-error'
+              errors?.password?.type === 'required' && 'input-error'
             }`}
             {...register('password', { required: true })}
           />
         </label>
-        {errors?.senha?.type === 'required' && (
-          <p className="text-red-600">Digite algo</p>
+        {errors?.password?.type === 'required' && (
+          <p className="text-red-600">Digite um valor</p>
         )}
 
         <button onClick={() => handleSubmit(onSubmit)()} className="button">

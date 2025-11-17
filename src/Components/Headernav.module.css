@@ -1,0 +1,3 @@
+.nav a{
+  @apply bg-gray-200 py-2 px-5 rounded-lg focus:outline-[#FABD01] block border-[3px]
+}

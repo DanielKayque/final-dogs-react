@@ -39,7 +39,7 @@ const LoginForm = () => {
           />
         </label>
         {errors?.username?.type === 'required' && (
-          <p className="text-red-600">Digite algo</p>
+          <p className="text-red-600">Digite um valor</p>
         )}
 
         <label htmlFor="senha">
@@ -52,8 +52,8 @@ const LoginForm = () => {
             {...register('password', { required: true })}
           />
         </label>
-        {errors?.senha?.type === 'required' && (
-          <p className="text-red-600">Digite algo</p>
+        {errors?.password?.type === 'required' && (
+          <p className="text-red-600">Digite um valor</p>
         )}
         {loading ? (
           <button className="button" disabled>
