@@ -95,7 +95,6 @@ export const UserStorage = ({ children }) => {
     const { url } = PHOTO_GET();
     const response = await fetch(url);
     const json = await response.json();
-    console.log(json);
     setPhotos(json);
   }
 
