@@ -1,7 +1,7 @@
 import React, { Children, useContext } from 'react';
 import { createContext } from 'react';
 import {
-  PHOTO_GET,
+  // PHOTO_GET,
   TOKEN_POST,
   TOKEN_VALIDATE_POST,
   USER_GET,
