@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { PHOTO_GET } from '../../api';
 import PhotoContent from '../../Photo/PhotoContent';
 import Loading from '../Helper/Loading';
+import styles from './FeedModal.module.css';
 
 const FeedModal = ({ photo }) => {
   const [data, setData] = useState('');
@@ -20,7 +21,7 @@ const FeedModal = ({ photo }) => {
   }, [photo]);
 
   return (
-    <div>
+    <div className={styles.modal}>
       {loading && <Loading />}
       {data && <PhotoContent data={data} />}
     </div>
