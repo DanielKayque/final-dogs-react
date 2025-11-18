@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FeedPhotosItem from './FeedPhotosItem';
 import { PHOTOS_GET } from '../../api';
 import Loading from '../Helper/Loading';
-import styles from './FeedPhotos.module.css'
+import styles from './FeedPhotos.module.css';
+import FeedModal from './FeedModal';
 
-const FeedPhotos = () => {
+const FeedPhotos = ({ setPhotoModal }) => {
   const [loading, setLoading] = React.useState(false);
-  const [data, setData] = React.useState('');
+  const [data, setData] = useState('')
+
   React.useEffect(() => {
     async function fetchPhotos() {
       setLoading(true);
@@ -23,12 +25,10 @@ const FeedPhotos = () => {
 
   if (loading) return <Loading />;
   return (
-    <ul
-      className={`animeLeft ${styles.feed}`}
-    >
+    <ul className={`animeLeft ${styles.feed}`}>
       {data &&
         data.map((photo, index) => (
-          <FeedPhotosItem key={photo.id} photo={photo} index={index} />
+          <FeedPhotosItem key={photo.id} photo={photo} index={index} setPhotoModal={setPhotoModal} />
         ))}
     </ul>
   );
