@@ -4,11 +4,12 @@ import FeedPhotos from './FeedPhotos';
 
 const Feed = () => {
   const [photoModal, setPhotoModal] = useState('');
-  
 
   return (
     <div>
-      {photoModal && <FeedModal photo={photoModal}/>}
+      {photoModal && (
+        <FeedModal photo={photoModal} setPhotoModal={setPhotoModal} />
+      )}
       <FeedPhotos setPhotoModal={setPhotoModal} />
     </div>
   );

@@ -3,11 +3,11 @@ import { UserContext } from '../Context/UserContext';
 
 const PhotoComments = ({ comments }) => {
   const { login } = useContext(UserContext);
+  
   return login ? (
     <ul>
       {comments &&
         comments.map((comentario, index) => (
-          // DICA: Use um ID do comentário em vez do index para a 'key'
           <li key={index}>
             <div className="flex gap-1">
               <p className="font-bold">{comentario.comment_author}: </p>
@@ -16,7 +16,6 @@ const PhotoComments = ({ comments }) => {
           </li>
         ))}
     </ul>
-  ) : // Se login for falso
-  null;
+  ) : null;
 };
 export default PhotoComments;

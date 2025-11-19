@@ -3,7 +3,7 @@ import Feed from './Feed/Feed'
 
 const Home = () => {
   return (
-    <section className='w-[800px] mx-auto'>
+    <section className='max-w-[1200px] mx-auto'>
       <Feed />
     </section>
   )

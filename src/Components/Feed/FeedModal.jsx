@@ -4,7 +4,7 @@ import PhotoContent from '../../Photo/PhotoContent';
 import Loading from '../Helper/Loading';
 import styles from './FeedModal.module.css';
 
-const FeedModal = ({ photo }) => {
+const FeedModal = ({ photo, setPhotoModal }) => {
   const [data, setData] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -20,8 +20,14 @@ const FeedModal = ({ photo }) => {
     modalPhoto();
   }, [photo]);
 
+  function handleOutsideClick(event) {
+    if (event.target === event.currentTarget) {
+      setPhotoModal(null);
+    }
+  }
+
   return (
-    <div className={styles.modal}>
+    <div className={styles.modal} onClick={handleOutsideClick}>
       {loading && <Loading />}
       {data && <PhotoContent data={data} />}
     </div>
