@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Enviar from '../images/Assets/enviar.svg?react';
 import { COMMENT_POST } from '../api';
+import { comment } from 'postcss';
 
 const PhotoForm = ({ id }) => {
   const { register, handleSubmit, formState: errors } = useForm();
 
-  async function onSubmit({comment}) {
-    console.log(comment);
-    console.log(id);
-    const { url, options } = COMMENT_POST(id, {comment} );
+  async function onSubmit({ comment }) {
+    const { url, options } = COMMENT_POST(id, { comment });
     const response = await fetch(url, options);
     const json = await response.json();
   }

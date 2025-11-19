@@ -7,6 +7,7 @@ import Footer from './Components/Footer';
 import Home from './Components/Home';
 import { UserStorage } from './Context/UserContext';
 import Conta from './Components/Conta';
+import NoFound from './Components/Helper/NoFound';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="conta/*" element={<Conta />} />
             <Route path="login/*" element={<Login />} />
+            <Route path="*" element={<NoFound />} />
           </Routes>
           <Footer />
         </UserStorage>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { UserContext } from '../Context/UserContext';
 
 const PhotoComments = ({ comments }) => {
@@ -7,7 +7,6 @@ const PhotoComments = ({ comments }) => {
     <ul>
       {comments &&
         comments.map((comentario, index) => (
-          // DICA: Use um ID do comentário em vez do index para a 'key'
           <li key={index}>
             <div className="flex gap-1">
               <p className="font-bold">{comentario.comment_author}: </p>
@@ -16,7 +15,8 @@ const PhotoComments = ({ comments }) => {
           </li>
         ))}
     </ul>
-  ) : // Se login for falso
-  null;
+  ) : (
+    <p className='text-gray-400'>Faça login para ter acesso aos comentários.</p>
+  );
 };
 export default PhotoComments;

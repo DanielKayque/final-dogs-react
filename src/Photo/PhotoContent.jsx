@@ -6,6 +6,7 @@ import PhotoForm from './PhotoForm';
 
 const PhotoContent = ({ data }) => {
   const { photo, comments } = data;
+  console.log(comments )
   return (
     <section className={styles.photo}>
       <div>
@@ -32,7 +33,7 @@ const PhotoContent = ({ data }) => {
           <PhotoComments id={photo.id} comments={comments} />
         </div>
         <div className={styles.photoForm}>
-          <PhotoForm id={photo.id}/>
+          <PhotoForm id={photo.id} comments={comments}/>
         </div>
       </div>
     </section>
