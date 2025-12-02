@@ -1,16 +1,26 @@
 # Dogs – Rede social para cachorros 🐶
 
-Projeto final do curso de React da Origamid.  
-Aplicação que simula uma rede social para compartilhamento de fotos de pets.
+Rede social de fotos (SPA) em React com autenticação JWT, upload de imagens, feed com modal de visualização e comentários.
 
 ## 🚀 Tecnologias usadas
-React, React Router, Tailwind, CSS Modules e Vite.
+- React, Vite
+- Tailwind CSS, PostCSS
+- react-router-dom, react-hook-form
+- Fetch API, JWT
+- Deploy: GitHub Pages
 
 ## 🧩 Funcionalidades
 - Login e criação de usuário
 - Postagem de fotos
 - Comentários
 - Página pessoal
+
+## 💡 Habilidades Aplicadas 
+- Autenticação JWT e gerenciamento de sessão
+- Integração com API REST e tratamento de erros
+- Upload de arquivos (FormData) e autorização por header
+- State management com Context API e hooks
+- Componentização, rotas aninhadas e UX (loading, modais)
 
 ## 🔗 API utilizada
 https://dogsapi.origamid.dev/json/
