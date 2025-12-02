@@ -12,7 +12,7 @@ import NoFound from './Components/Helper/NoFound';
 const App = () => {
   return (
     <div>
-      <BrowserRouter basename="/final-dogs-react/">
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <UserStorage>
           <Header />
           <Routes>
